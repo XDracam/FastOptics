@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <OutputType>Exe</OutputType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DracTecOptics.Generators\DracTecOptics.Generators.Sample\DracTecOptics.Generators.Sample.csproj" />
+    <ProjectReference Include="..\DracTecOptics.Generators\DracTecOptics.Generators\DracTecOptics.Generators.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BenchmarkDotNet" Version="0.14.0" />
+  </ItemGroup>
+
+</Project>
