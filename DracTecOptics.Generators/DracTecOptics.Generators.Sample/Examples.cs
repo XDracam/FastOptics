@@ -8,7 +8,7 @@ public record Name(string First, string Last);
 public partial record struct Person(Name Name, int Age);
 
 public static class Examples
-{
+{ 
     public static Person HappyBirthday(Person person) => 
         Person.Lens.Age.Update(person, age => age + 1);
     

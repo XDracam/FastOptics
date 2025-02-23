@@ -93,12 +93,16 @@ public class LensSourceGenerator : IIncrementalGenerator
 
             var codeBuilder = new StringBuilder();
             codeBuilder.AppendLine(pre);
-            codeBuilder.AppendLine(@$"public static class Lens
-{{
-{string.Join("\n", properties.Select(p => $"    public static LensFor_{p.Name} {p.Name} => LensFor_{p.Name}.Instance;"))}
-}}");
+            codeBuilder.AppendLine($$"""
+                                     public static class Lens {
+                                     {{string.Join("\n", properties.Select(p => 
+                                         $"    public static Generated.LensFor_{p.Name} {p.Name} => " +
+                                                $"Generated.LensFor_{p.Name}.Instance;"))}}
+                                     """);
+            codeBuilder.AppendLine("public static class Generated {");
             foreach (var lens in lenses)
                 codeBuilder.AppendLine(lens);
+            codeBuilder.AppendLine("}}"); // close Generated and Lens
             codeBuilder.Append(post);
 
             var name = CodeGenerationUtils.UniqueFileNameFor(recordSymbol);

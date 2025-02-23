@@ -28,53 +28,56 @@ public class LensSourceGeneratorTests
         {    
             public static class Lens
             {
-                public static LensFor_Name Name => LensFor_Name.Instance;
-                public static LensFor_Age Age => LensFor_Age.Instance;
-            }
+                public static Generated.LensFor_Name Name => Generated.LensFor_Name.Instance;
+                public static Generated.LensFor_Age Age => Generated.LensFor_Age.Instance;
+                
+                public static class Generated {
             
-            public sealed class LensFor_Name_First : ILens<Person, string>
-            {
-                private LensFor_Name_First() { }
-                public static readonly LensFor_Name_First Instance = new();
-                
-                [MethodImpl(MethodImplOptions.AggressiveInlining)]
-                public string Get(Person theRecord) => theRecord.Name.First;
-                public Person Set(Person theRecord, string value) => 
-                    theRecord with { Name = theRecord.Name with { First = value } };
-            }
-            
-            public sealed class LensFor_Name_Last : ILens<Person, string>
-            {
-                private LensFor_Name_Last() { }
-                public static readonly LensFor_Name_Last Instance = new();
-                
-                [MethodImpl(MethodImplOptions.AggressiveInlining)]
-                public string Get(Person theRecord) => theRecord.Name.Last;
-                public Person Set(Person theRecord, string value) => 
-                    theRecord with { Name = theRecord.Name with { Last = value } };
-            }
-            
-            public sealed class LensFor_Name : ILens<Person, global::TestNamespace.Name>
-            {
-                private LensFor_Name() { }
-                public static readonly LensFor_Name Instance = new();
-                
-                [MethodImpl(MethodImplOptions.AggressiveInlining)]
-                public global::TestNamespace.Name Get(Person theRecord) => theRecord.Name;
-                public Person Set(Person theRecord, global::TestNamespace.Name value) => theRecord with { Name = value };
-                
-                public LensFor_Name_First First => LensFor_Name_First.Instance;
-                public LensFor_Name_Last Last => LensFor_Name_Last.Instance;
-            }
-            
-            public sealed class LensFor_Age : ILens<Person, int>
-            {
-                private LensFor_Age() { }
-                public static readonly LensFor_Age Instance = new();
-                
-                [MethodImpl(MethodImplOptions.AggressiveInlining)]
-                public int Get(Person theRecord) => theRecord.Age;
-                public Person Set(Person theRecord, int value) => theRecord with { Age = value };
+                    public sealed class LensFor_Name_First : ILens<Person, string>
+                    {
+                        private LensFor_Name_First() { }
+                        public static readonly LensFor_Name_First Instance = new();
+                        
+                        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+                        public string Get(Person theRecord) => theRecord.Name.First;
+                        public Person Set(Person theRecord, string value) => 
+                            theRecord with { Name = theRecord.Name with { First = value } };
+                    }
+                    
+                    public sealed class LensFor_Name_Last : ILens<Person, string>
+                    {
+                        private LensFor_Name_Last() { }
+                        public static readonly LensFor_Name_Last Instance = new();
+                        
+                        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+                        public string Get(Person theRecord) => theRecord.Name.Last;
+                        public Person Set(Person theRecord, string value) => 
+                            theRecord with { Name = theRecord.Name with { Last = value } };
+                    }
+                    
+                    public sealed class LensFor_Name : ILens<Person, global::TestNamespace.Name>
+                    {
+                        private LensFor_Name() { }
+                        public static readonly LensFor_Name Instance = new();
+                        
+                        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+                        public global::TestNamespace.Name Get(Person theRecord) => theRecord.Name;
+                        public Person Set(Person theRecord, global::TestNamespace.Name value) => theRecord with { Name = value };
+                        
+                        public LensFor_Name_First First => LensFor_Name_First.Instance;
+                        public LensFor_Name_Last Last => LensFor_Name_Last.Instance;
+                    }
+                    
+                    public sealed class LensFor_Age : ILens<Person, int>
+                    {
+                        private LensFor_Age() { }
+                        public static readonly LensFor_Age Instance = new();
+                        
+                        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+                        public int Get(Person theRecord) => theRecord.Age;
+                        public Person Set(Person theRecord, int value) => theRecord with { Age = value };
+                    }
+                }
             }
         }
         """;
