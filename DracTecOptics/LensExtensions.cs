@@ -1,30 +1,5 @@
 ﻿namespace DracTec.Optics;
 
-/// <summary>
-/// A functional lens for some type <typeparamref name="TRecord"/> which encapsulates
-///  access to a (potentially deeply nested) property of type <typeparamref name="TValue"/>.
-/// </summary>
-public interface ILens<TRecord, TValue>
-{
-    TValue Get(TRecord theRecord);
-    TRecord Set(TRecord theRecord, TValue value);
-
-    public TValue this[TRecord theRecord] => Get(theRecord);
-}
-
-/// <summary>
-/// Basic implementation of <see cref="ILens{TRecord,TValue}"/> using closures.
-/// Prefer the lenses generated through <see cref="WithLensesAttribute"/> for less overhead.
-/// </summary>
-public sealed record BasicLens<TRecord, TValue>(
-    Func<TRecord, TValue> Getter, 
-    Func<TRecord, TValue, TRecord> Setter
-) : ILens<TRecord, TValue>
-{
-    public TValue Get(TRecord theRecord) => Getter(theRecord);
-    public TRecord Set(TRecord theRecord, TValue value) => Setter(theRecord, value);
-}
-
 public static class LensExtensions
 {
     /// <summary>
@@ -51,5 +26,12 @@ public static class LensExtensions
         r => getter(self.Get(r)), 
         (r, v) => self.Set(r, setter(self.Get(r), v))
     );
+    
+    public static Func<TRecord, TValue> AsFunc<TRecord, TValue>(this IGetter<TRecord, TValue> getter) => getter.Get;
+    
+    public static TRecord Update<TRecord, TValue>(
+        this ILens<TRecord, TValue> lens, 
+        TRecord record, 
+        Func<TValue, TValue> update
+    ) => lens.Set(record, update(lens.Get(record)));
 }
-

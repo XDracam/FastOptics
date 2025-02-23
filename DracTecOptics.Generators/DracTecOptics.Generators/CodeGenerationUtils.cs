@@ -27,7 +27,7 @@ public static class CodeGenerationUtils {
                     => ($"{pre}namespace {nds.Name} {{\n{(nds.Usings.Count > 0 ? $"{Indent(i + 1)}{nds.Usings}\n" : "")}\n", i + 1, $"}}{post}"),
             TypeDeclarationSyntax tds when 
                 MkContext(includeSelf ? tds.Parent : tds, defaultIncludes, includeSelf) is {prefix: var pre, indentation: var i, postfix: var post}
-                => ($"{pre}{Indent(i)}{tds.Modifiers} {tds.Keyword} {tds.Identifier}{GenericsFor(tds)}{openBrace}", i + 1, $"{Indent(i)}}}\n{post}"),
+                    => ($"{pre}{Indent(i)}{tds.Modifiers} {tds.Keyword} {classOrStructKeywordFor(tds)} {tds.Identifier}{GenericsFor(tds)}{openBrace}", i + 1, $"{Indent(i)}}}\n{post}"),
             _ => MkContext(context.Parent, defaultIncludes, includeSelf, includeOpenBrace)
         };
 
@@ -38,6 +38,11 @@ public static class CodeGenerationUtils {
                 return ($"{string.Join("\n", defaultIncludes.Select(inc => $"using {inc};").Distinct())}\n\nnamespace {fileScopedNamespace.Name};\n\n", 0, "");
             else return ($"{string.Join("\n", cus.Usings.Select(u => u.ToString()).Concat(defaultIncludes.Select(inc => $"using {inc};")).Distinct())}\n\n", 0, "");
         }
+        
+        string classOrStructKeywordFor(TypeDeclarationSyntax tds) => tds switch {
+            RecordDeclarationSyntax rds => rds.ClassOrStructKeyword.ToString(),
+            _ => ""
+        };
     }
 
     public static string Indent(int depth) => string.Join("", Enumerable.Repeat("    ", depth));

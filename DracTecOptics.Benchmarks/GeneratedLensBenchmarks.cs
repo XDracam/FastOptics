@@ -14,13 +14,21 @@ public partial class GeneratedLensBenchmarks
     public sealed partial record Base(NamedPoint NamedPoint, float Junk);
     
     private readonly Base _base = new(new(new(new(1337, 42), Color.Aqua), "TestPoint"), 0xdeadbeef);
+    
+    private readonly ILens<Base, int> _xLens = Base.Lens.NamedPoint.Point.Pos.X;
 
     [Benchmark]
     public Base SetXWithLenses()
     {
-        return Base.Lens.NamedPoint.Point.Pos.X.Set(_base, 69);
+        return Base.Lens.NamedPoint.Point.Pos.X.Set(_base, 13);
     }
     
+    [Benchmark]
+    public Base SetXWithLensesThroughInterface()
+    {
+        return _xLens.Set(_base, 13);
+    }
+
     [Benchmark]
     public Base SetXRegularly()
     {
@@ -28,7 +36,7 @@ public partial class GeneratedLensBenchmarks
         {
             NamedPoint = _base.NamedPoint with
             {
-                Point = _base.NamedPoint.Point with { Pos = _base.NamedPoint.Point.Pos with { X = 69 } }
+                Point = _base.NamedPoint.Point with { Pos = _base.NamedPoint.Point.Pos with { X = 13 } }
             }
         };
     }
@@ -37,6 +45,12 @@ public partial class GeneratedLensBenchmarks
     public int GetXWithLenses()
     {
         return Base.Lens.NamedPoint.Point.Pos.X.Get(_base);
+    }
+    
+    [Benchmark]
+    public int GetXWithLensesThroughInterface()
+    {
+        return _xLens.Get(_base);
     }
     
     [Benchmark]

@@ -14,7 +14,7 @@ public class LensSourceGeneratorTests
         public record Name(string First, string Last);
 
         [WithLenses]
-        public partial record Person(Name Name, int Age);
+        public partial record struct Person(Name Name, int Age);
         """;
 
     private const string ExpectedGeneratedText = 
@@ -24,7 +24,7 @@ public class LensSourceGeneratorTests
 
         namespace TestNamespace;
 
-        public partial record Person
+        public partial record struct Person
         {    
             public static class Lens
             {

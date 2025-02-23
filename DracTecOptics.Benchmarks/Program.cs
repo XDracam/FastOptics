@@ -1,4 +1,9 @@
-﻿using BenchmarkDotNet.Running;
+﻿using BenchmarkDotNet.Configs;
+using BenchmarkDotNet.Exporters;
+using BenchmarkDotNet.Running;
 using DracTecOptics.Benchmarks;
 
-BenchmarkRunner.Run<GeneratedLensBenchmarks>();
+var config = DefaultConfig.Instance
+    .AddExporter(MarkdownExporter.GitHub);
+
+BenchmarkRunner.Run<GeneratedLensBenchmarks>(config);
