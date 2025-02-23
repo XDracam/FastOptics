@@ -62,6 +62,9 @@ ILens<Person, string> firstName = Person.Lens.Name.Combine(Name.Lens.First);
 Person richard = new Person(new("Richard", "Smith"), 42);
 Person rick = firstName.Set(richard, "Rick");
 
+// happy birthday!
+Person olderRick = Person.Lens.Age.Update(rick, age => age + 1);
+
 List<Person> people = queryAllPeople();
 var firstNames = people.Select(firstName.AsFunc).ToList();
 ```
