@@ -27,10 +27,10 @@ jobs:
         run: dotnet build DracTec.Optics/DracTec.Optics.csproj -c Release --no-restore
 
       - name: Pack NuGet Packages
-        run: dotnet pack DracTec.Optics/DracTec.Optics.csproj -c Release --no-build -o ./nupkgs
+        run: dotnet pack DracTec.Optics/DracTec.Optics.csproj -c Release --no-build -o ../nupkgs
 
       - name: Push to Nuget
-        run: dotnet nuget push "./nupkgs/*.nupkg" --source "https://api.nuget.org/v3/index.json" --api-key ${{ secrets.NUGETPUBLISHKEY }}
+        run: dotnet nuget push "../nupkgs/*.nupkg" --source "https://api.nuget.org/v3/index.json" --api-key ${{ secrets.NUGETPUBLISHKEY }}
           
       - name: Create Release
         uses: ncipollo/release-action@v1
