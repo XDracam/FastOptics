@@ -3,7 +3,7 @@ name: Release
 on:
   push:
     tags:
-      - '**'  # Triggers on any tag (use only valid SemVer tags for automatic releases)
+      - 'v*'  # Triggers on tags starting with v (must be valid semantic versioning)
 
 permissions:
   contents: write

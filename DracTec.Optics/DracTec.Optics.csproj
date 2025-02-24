@@ -36,11 +36,10 @@
 
   <!-- Automatic versioning -->
   <ItemGroup>
-    <PackageReference Include="MinVer" Version="[6.0.0,)" PrivateAssets="all" />
+    <PackageReference Include="MinVer" Version="[6.0.0,)" PrivateAssets="All" />
   </ItemGroup>
 
   <PropertyGroup Label="MinVer">
-    <MinVerAutoIncrement>minor</MinVerAutoIncrement>
     <MinVerDefaultPreReleaseIdentifiers>preview.0</MinVerDefaultPreReleaseIdentifiers>
     <MinVerTagPrefix>v</MinVerTagPrefix>
   </PropertyGroup>
