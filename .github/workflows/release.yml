@@ -3,7 +3,7 @@ name: Release
 on:
   push:
     tags:
-      - 'v*'  # Triggers the workflow when a tag starting with "v" is pushed
+      - '**'  # Triggers on any tag (use only valid SemVer tags for automatic releases)
 
 permissions:
   contents: write
