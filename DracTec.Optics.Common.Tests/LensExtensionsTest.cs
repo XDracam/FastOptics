@@ -24,7 +24,7 @@ public partial class LensExtensionsTest
             .Compose(new BasicLens<Name, string>(n => n.Last, (n, v) => n with { Last = v }));
         var updated = composed.Set(person, "Smith");
         Assert.That(updated.Name.Last, Is.EqualTo("Smith"));
-        Assert.That(updated.Name.Last, Is.EqualTo(composed.Get(person)));
+        Assert.That(updated.Name.Last, Is.EqualTo(composed.Get(updated)));
     }
     
     [Test]
@@ -35,6 +35,6 @@ public partial class LensExtensionsTest
             .Compose(n => n.Last, (n, v) => n with { Last = v });
         var updated = composed.Set(person, "Smith");
         Assert.That(updated.Name.Last, Is.EqualTo("Smith"));
-        Assert.That(updated.Name.Last, Is.EqualTo(composed.Get(person)));
+        Assert.That(updated.Name.Last, Is.EqualTo(composed.Get(updated)));
     }
 }
