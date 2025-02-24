@@ -1,0 +1,48 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <IsPackable>true</IsPackable>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Nuget">
+    <Title>DracTec.Optics</Title>
+    <PackageId>DracTec.Optics</PackageId>
+    <Authors>Cameron Reuschel</Authors>
+    <Description>This package provides a very-low-overhead implementation of Lenses for C# records.
+      Lenses are a functional programming concept that allows convenient manipulation of deeply nested records.
+      The package includes ways to generate lenses for record types.</Description>
+    <PackageTags>lenses;functional-programming;csharp;immutability;code-generation</PackageTags>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <RepositoryUrl>https://github.com/XDracam/FastOptics</RepositoryUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageProjectUrl>https://github.com/XDracam/FastOptics</PackageProjectUrl>
+  </PropertyGroup>
+
+  <!-- Ensure that these are compiled first -->
+  <ItemGroup>
+    <ProjectReference Include="..\DracTec.Optics.Common\DracTec.Optics.Common.csproj" ReferenceOutputAssembly="false"/>
+    <ProjectReference Include="..\DracTec.Optics.Generators\DracTec.Optics.Generators\DracTec.Optics.Generators.csproj" ReferenceOutputAssembly="false"/>
+  </ItemGroup>
+
+  <!-- Ensure that these are included in the nupkg -->
+  <ItemGroup>
+    <None Include="../README.md" Pack="true" PackagePath="/" />
+    <None Include="../DracTec.Optics.Common/bin/$(Configuration)/netstandard2.0/DracTec.Optics.Common.dll" Pack="true" PackagePath="lib/netstandard2.0" Visible="true" />
+    <None Include="../DracTec.Optics.Generators/DracTec.Optics.Generators/bin/$(Configuration)/netstandard2.0/DracTec.Optics.Generators.dll" Pack="true" PackagePath="analyzers/roslyn4.8/dotnet/cs" Visible="true" />
+  </ItemGroup>
+
+  <!-- Automatic versioning -->
+  <ItemGroup>
+    <PackageReference Include="MinVer" Version="[6.0.0,)" PrivateAssets="all" />
+  </ItemGroup>
+
+  <PropertyGroup Label="MinVer">
+    <MinVerAutoIncrement>minor</MinVerAutoIncrement>
+    <MinVerDefaultPreReleaseIdentifiers>preview.0</MinVerDefaultPreReleaseIdentifiers>
+    <MinVerTagPrefix>v</MinVerTagPrefix>
+  </PropertyGroup>
+
+</Project>

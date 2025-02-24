@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>DracTec.Optics.Benchmarks</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DracTec.Optics\DracTec.Optics.csproj" />
+    <ProjectReference Include="..\DracTec.Optics.Generators\DracTec.Optics.Generators.Sample\DracTec.Optics.Generators.Sample.csproj" />
+    <ProjectReference Include="..\DracTec.Optics.Generators\DracTec.Optics.Generators\DracTec.Optics.Generators.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BenchmarkDotNet" Version="0.14.0" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,39 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'  # Triggers the workflow when a tag starting with "v" is pushed
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 9.0.x
+
+      - name: Restore Dependencies
+        run: dotnet restore DracTec.Optics/DracTec.Optics.csproj
+
+      - name: Build Solution
+        run: dotnet build DracTec.Optics/DracTec.Optics.csproj -c Release --no-restore
+
+      - name: Pack NuGet Packages
+        run: dotnet pack DracTec.Optics/DracTec.Optics.csproj -c Release --no-build --property:PackageOutputPath=../../nupkgs
+
+      - name: Push to Nuget
+        run: dotnet nuget push "./nupkgs/*.nupkg" --source "https://api.nuget.org/v3/index.json" --api-key ${{ secrets.NUGETPUBLISHKEY }}
+          
+      - name: Create Release
+        uses: ncipollo/release-action@v1
+        with:
+          generateReleaseNotes: 'true'
+          makeLatest: 'true'

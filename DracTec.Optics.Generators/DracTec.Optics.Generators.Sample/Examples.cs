@@ -1,6 +1,4 @@
-﻿using DracTec.Optics;
-
-namespace DracTecOptics.Generators.Sample;
+﻿namespace DracTec.Optics.Generators.Sample;
 
 public record Name(string First, string Last);
 

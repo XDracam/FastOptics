@@ -3,7 +3,7 @@ using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Xunit;
 
-namespace DracTecOptics.Generators.Tests;
+namespace DracTec.Optics.Generators.Tests;
 
 public class LensSourceGeneratorTests
 {

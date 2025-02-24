@@ -6,7 +6,7 @@
 
     <IsPackable>false</IsPackable>
 
-    <RootNamespace>DracTecOptics.Generators.Tests</RootNamespace>
+    <RootNamespace>DracTec.Optics.Generators.Tests</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DracTecOptics.Generators\DracTecOptics.Generators.csproj"/>
+    <ProjectReference Include="..\DracTec.Optics.Generators\DracTec.Optics.Generators.csproj" />
   </ItemGroup>
 
 

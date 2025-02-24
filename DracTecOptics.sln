@@ -1,14 +1,16 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DracTecOptics", "DracTecOptics\DracTecOptics.csproj", "{4AC5B512-262E-47D9-A22D-DA8A1E51019F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DracTec.Optics.Common", "DracTec.Optics.Common\DracTec.Optics.Common.csproj", "{4AC5B512-262E-47D9-A22D-DA8A1E51019F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DracTecOptics.Generators", "DracTecOptics.Generators\DracTecOptics.Generators\DracTecOptics.Generators.csproj", "{5F731439-3A8C-4223-9AD8-C01F1FCA9DF3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DracTec.Optics.Generators", "DracTec.Optics.Generators\DracTec.Optics.Generators\DracTec.Optics.Generators.csproj", "{5F731439-3A8C-4223-9AD8-C01F1FCA9DF3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DracTecOptics.Generators.Sample", "DracTecOptics.Generators\DracTecOptics.Generators.Sample\DracTecOptics.Generators.Sample.csproj", "{C15140DA-F255-4F7B-9218-E1671DA76E78}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DracTec.Optics.Generators.Sample", "DracTec.Optics.Generators\DracTec.Optics.Generators.Sample\DracTec.Optics.Generators.Sample.csproj", "{C15140DA-F255-4F7B-9218-E1671DA76E78}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DracTecOptics.Generators.Tests", "DracTecOptics.Generators\DracTecOptics.Generators.Tests\DracTecOptics.Generators.Tests.csproj", "{CB7E9113-6E70-4261-B63B-89ADFF7B20E6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DracTec.Optics.Generators.Tests", "DracTec.Optics.Generators\DracTec.Optics.Generators.Tests\DracTec.Optics.Generators.Tests.csproj", "{CB7E9113-6E70-4261-B63B-89ADFF7B20E6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DracTecOptics.Benchmarks", "DracTecOptics.Benchmarks\DracTecOptics.Benchmarks.csproj", "{F41E5B69-7A74-45B1-8C26-E0B52BD05162}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DracTec.Optics.Benchmarks", "DracTec.Optics.Benchmarks\DracTec.Optics.Benchmarks.csproj", "{F41E5B69-7A74-45B1-8C26-E0B52BD05162}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DracTec.Optics", "DracTec.Optics\DracTec.Optics.csproj", "{3C393C9C-3412-42EB-8328-705099AC70E0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,5 +38,9 @@ Global
 		{F41E5B69-7A74-45B1-8C26-E0B52BD05162}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F41E5B69-7A74-45B1-8C26-E0B52BD05162}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F41E5B69-7A74-45B1-8C26-E0B52BD05162}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C393C9C-3412-42EB-8328-705099AC70E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C393C9C-3412-42EB-8328-705099AC70E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C393C9C-3412-42EB-8328-705099AC70E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C393C9C-3412-42EB-8328-705099AC70E0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

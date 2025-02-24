@@ -1,8 +1,7 @@
 ﻿using System.Drawing;
 using BenchmarkDotNet.Attributes;
-using DracTec.Optics;
 
-namespace DracTecOptics.Benchmarks;
+namespace DracTec.Optics.Benchmarks;
 
 public partial class GeneratedLensBenchmarks
 {

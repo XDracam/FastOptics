@@ -7,7 +7,7 @@ using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Text;
 
-namespace DracTecOptics.Generators;
+namespace DracTec.Optics.Generators;
 
 // Generates specialized lens implementations for all properties on all records with [WithLenses]
 // Relevant design choices:

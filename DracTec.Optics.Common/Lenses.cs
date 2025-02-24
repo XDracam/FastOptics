@@ -3,7 +3,6 @@
 public interface IGetter<in TRecord, out TValue>
 {
     TValue Get(TRecord theRecord);
-    public TValue this[TRecord theRecord] => Get(theRecord);
 }
 
 /// <summary>
