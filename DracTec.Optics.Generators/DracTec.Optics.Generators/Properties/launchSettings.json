@@ -3,7 +3,7 @@
   "profiles": {
     "DebugRoslynSourceGenerator": {
       "commandName": "DebugRoslynComponent",
-      "targetProject": "../DracTecOptics.Generators.Sample/DracTecOptics.Generators.Sample.csproj"
+      "targetProject": "../DracTec.Optics.Generators.Sample/DracTecOptics.Generators.Sample.csproj"
     }
   }
 }

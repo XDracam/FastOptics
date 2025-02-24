@@ -44,7 +44,6 @@ Either commands, from Package Manager Console or .NET Core CLI, will download an
 Add the `[WithLenses]` attribute to your top level record that you want lenses for:
 
 ```cs
-[WithLenses]
 public record struct Name(string First, string Last);
 
 [WithLenses]
