@@ -27,9 +27,19 @@ public Base SetXRegularly()
 }
 ```
 
-## Usage
+## Getting Started
 
-TODO: upload to NuGet
+You can install [`DracTec.Optics` with NuGet](https://www.nuget.org/packages/DracTec.Optics):
+
+    Install-Package DracTec.Optics
+
+Or via the .NET Core command line interface:
+
+    dotnet add package DracTec.Optics
+
+Either commands, from Package Manager Console or .NET Core CLI, will download and install `DracTec.Optics`.
+
+## Usage
 
 Add the `[WithLenses]` attribute to your top level record that you want lenses for:
 
