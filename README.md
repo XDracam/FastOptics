@@ -5,6 +5,8 @@
 There are some implementations for Lenses in C# out there ([dadhi/Lens.cs](https://gist.github.com/dadhi/3db1ed45a60bceaa16d051ee9a4ab1b7), [Tinkoff/Visor](https://github.com/Tinkoff/Visor), ...) but all of these implementations incur a significant runtime overhead.
 And I like to have my cake and eat it too. Additionally, I wanted useful and simple and easy-to-understand lenses without all the fancy FP terms that can be used by junior developers as well as seasoned developers.
 
+**The goal of this project is to provide the convenience of functional optics without any significant runtime overhead.**
+
 Still not sure why you'd want this? Look at this (deprived) benchmark example:
 
 ```cs
