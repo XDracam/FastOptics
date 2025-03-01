@@ -83,7 +83,7 @@ public class LensAnalyzerTests
         var test = CustomTest.Create(text);
 
         var expected = Verifier.Diagnostic(LensAnalyzer.ValidPathDiagnostic.Rule).WithSeverity(DiagnosticSeverity.Error)
-            .WithSpan(11, 11, 11, 23).WithArguments("Person", "int");
+            .WithSpan(11, 11, 11, 23).WithArguments(".Name.Last", "Person", "int", "it has type 'string'");
         test.ExpectedDiagnostics.Add(expected);
         await test.RunAsync(CancellationToken.None);
     }
@@ -113,7 +113,7 @@ public class LensAnalyzerTests
         var test = CustomTest.Create(text);
 
         var expected = Verifier.Diagnostic(LensAnalyzer.ValidPathDiagnostic.Rule).WithSeverity(DiagnosticSeverity.Error)
-            .WithSpan(11, 11, 11, 24).WithArguments("Person", "string");
+            .WithSpan(11, 11, 11, 24).WithArguments(".Name.Blast", "Person", "string", "the expression does not compile");
         test.ExpectedDiagnostics.Add(expected);
         await test.RunAsync(CancellationToken.None);
     }
