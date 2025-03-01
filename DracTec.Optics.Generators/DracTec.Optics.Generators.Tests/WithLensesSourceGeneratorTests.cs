@@ -5,7 +5,7 @@ using Xunit;
 
 namespace DracTec.Optics.Generators.Tests;
 
-public class LensSourceGeneratorTests
+public class WithLensesSourceGeneratorTests
 {
     private const string SourceText = 
         """
@@ -85,11 +85,11 @@ public class LensSourceGeneratorTests
     [Fact]
     public void GenerateReportMethod()
     {
-        var generator = new LensSourceGenerator();
+        var generator = new WithLensesSourceGenerator();
 
         var driver = CSharpGeneratorDriver.Create(generator);
 
-        var compilation = CSharpCompilation.Create(nameof(LensSourceGeneratorTests),
+        var compilation = CSharpCompilation.Create(nameof(WithLensesSourceGeneratorTests),
             [CSharpSyntaxTree.ParseText(SourceText)],
             [
                 // To support 'System.Attribute' inheritance, add reference to 'System.Private.CoreLib'.

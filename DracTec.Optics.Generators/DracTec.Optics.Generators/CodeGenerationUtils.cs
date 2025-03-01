@@ -49,7 +49,7 @@ public static class CodeGenerationUtils {
     public static string GenericsFor(TypeDeclarationSyntax tds) =>
         tds.TypeParameterList is { } tps ? tps.ToString() : "";
     
-    public static string UniqueFileNameFor(INamedTypeSymbol symbol) => 
+    public static string UniqueFileNameFor(ISymbol symbol) => 
         // Use the fully qualified metadata name and replace invalid characters for file names
         symbol.ToDisplayString(SymbolDisplayFormat.FullyQualifiedFormat)
             .Replace("<", ".")

@@ -60,6 +60,17 @@ Person marriedAlice = Person.Lens.Name.Last.Set(alice, "Thorsson");
 Debug.Assert(marriedAlice.Name.Last == Person.Lens.Name.Last.Get(alice));
 ```
 
+Alternatively, you can generate lenses for records that you do not own.
+In both cases, the generated lens is a singleton that is only allocated once.
+
+```cs 
+[Lens(".Name.First")]
+public static partial ILens<Person, string> FirstNameLens { get; }
+
+[Lens(".Name.Last")]
+public static partial ILens<Person, string> LastNameLens();
+```
+
 Lenses can also be reused and composed (with some overhead)
 
 ```cs

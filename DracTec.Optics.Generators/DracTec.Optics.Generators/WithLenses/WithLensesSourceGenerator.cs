@@ -24,7 +24,7 @@ namespace DracTec.Optics.Generators;
 // 6. The `Instance` field is always eagerly initialized -> basically no performance overhead
 
 [Generator]
-public class LensSourceGenerator : IIncrementalGenerator
+public class WithLensesSourceGenerator : IIncrementalGenerator
 {
     private const string AttributeName = "WithLenses";
 
@@ -73,7 +73,7 @@ public class LensSourceGenerator : IIncrementalGenerator
         foreach (var (recordDeclarationSyntax, isRecursive) in recordDeclarations)
         {
             var semanticModel = compilation.GetSemanticModel(recordDeclarationSyntax.SyntaxTree);
-            if (ModelExtensions.GetDeclaredSymbol(semanticModel, recordDeclarationSyntax) is not INamedTypeSymbol recordSymbol)
+            if (semanticModel.GetDeclaredSymbol(recordDeclarationSyntax) is not { } recordSymbol)
                 continue;
 
             // ignore indent, we just use auto-formatting
@@ -151,19 +151,15 @@ public class LensSourceGenerator : IIncrementalGenerator
     
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public {propertyType} Get({recordName} theRecord) => 
-        theRecord{getPropChain(properties)};
+        theRecord{string.Join("", properties.Select(p => $".{p.Name}"))};
     public {recordName} Set({recordName} theRecord, {propertyType} value) => 
-        theRecord with {{ {setPropChain(properties, "value")} }};
+        theRecord with {{ {setPropChain(properties)} }};
 {string.Join("\n", propertiesToReference)}
 }}"; 
-
-        string getPropChain(ImmutableList<IPropertySymbol> props) =>
-            string.Join("", props.Select(p => $".{p.Name}"));
-
-        string setPropChain(ImmutableList<IPropertySymbol> props, string value) =>
-            string.Join("", Enumerable.Range(0, props.Count - 1).Select(i => 
-                $"{props[i].Name} = theRecord.{string.Join(".", props.Take(i + 1).Select(p => p.Name))} with {{"))
-            + $" {props.Last().Name} = {value} "
-            + new string('}', props.Count - 1);
+        static string setPropChain(ImmutableList<IPropertySymbol> properties) =>
+            string.Join("", Enumerable.Range(0, properties.Count - 1).Select(i => 
+                $"{properties[i].Name} = theRecord.{string.Join(".", properties.Take(i + 1).Select(p => p.Name))} with {{"))
+            + $" {properties.Last().Name} = value "
+            + new string('}', properties.Count - 1);
     }
 }
